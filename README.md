@@ -1,4 +1,4 @@
-# "WeDrone" - Automated Delivery System Application
+# "WeDrone" - Drone Delivery System Application
 
 ## Course Project for SOFE3650 and SOFE3700
 
