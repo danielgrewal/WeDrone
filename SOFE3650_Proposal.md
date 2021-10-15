@@ -11,9 +11,27 @@ Mohammed Adnan Hashmi 100753115</br>
 
 ## Functional Requirements
 
-List here...
+Requirement # | Description
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+Content Cell  | Content Cell
 
 ## Non-functional Requirements
 
-List here...
+Requirement # | Description
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
 
