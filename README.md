@@ -9,7 +9,7 @@ Karanvir Bhogal 100748973</br>
 Daniel Grewal 100768376 *(Team Lead)</br>
 Mohammed Adnan Hashmi 100753115</br>
 
-# Project Summary
+## Project Summary
 
 Put info about the project here
 
