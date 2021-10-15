@@ -13,8 +13,7 @@ Mohammed Adnan Hashmi 100753115</br>
 
 List here...
 
-### Link to Google Docs with Project Requirements
+## Non-functional Requirements
 
-https://docs.google.com/document/d/1hI6PktZxZCk56eKYz-GoA1H9X_QNanjZfrjxDffpEXw/edit?usp=sharing
-
+List here...
 
