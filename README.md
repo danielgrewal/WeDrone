@@ -9,6 +9,12 @@ Karanvir Bhogal 100748973</br>
 Daniel Grewal 100768376 *(Team Lead)*</br>
 Mohammed Adnan Hashmi 100753115</br>
 
+## Link to SOFE3650 Proposal Document
+https://github.com/danielgrewal/WeDrone/blob/main/SOFE3650_Project_Proposal_Requirements.pdf
+
+## Link to SOFE3700 Proposal Document
+https://github.com/danielgrewal/WeDrone/blob/main/SOFE3700_Project_Proposal.pdf
+
 ## Introduction
 
 The WeDrone Delivery System is a future facing drone delivery service helping consumers with their
