@@ -15,6 +15,9 @@ https://github.com/danielgrewal/WeDrone/blob/main/SOFE3650_Project_Progress_Repo
 ## Link to SOFE3650 Proposal Document (Deliverable 1)
 https://github.com/danielgrewal/WeDrone/blob/main/SOFE3650_Project_Proposal_Requirements.pdf
 
+## Link to SOFE3700 Database Design Document (Phase 2)
+https://github.com/danielgrewal/WeDrone/blob/main/SOFE3700_Project_Database_Design.pdf
+
 ## Link to SOFE3700 Proposal Document (Phase 1)
 https://github.com/danielgrewal/WeDrone/blob/main/SOFE3700_Project_Proposal.pdf
 
