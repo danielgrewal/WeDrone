@@ -11,11 +11,18 @@ namespace WeDrone.Web.Controllers
             return View();
         }
 
+        public IActionResult Order()
+        {
+            return View();
+        }
+
         public IActionResult Locations(string query)
         {
 
 
             throw new NotImplementedException();
         }
+
+        
     }
 }
