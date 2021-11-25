@@ -17,7 +17,17 @@ namespace WeDrone.Web.Controllers
             return View();
         }
 
-        public async Task<IActionResult> FindAddress([FromServices]IAddressLookup addressFinder, string query)
+        public IActionResult Track()
+        {
+            return View();
+        }
+
+        public IActionResult History()
+        {
+            return View();
+        }
+
+        public IActionResult Locations(string query)
         {
             var addresses = await addressFinder.Find(query);
 
