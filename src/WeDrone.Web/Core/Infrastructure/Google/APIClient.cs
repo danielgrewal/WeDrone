@@ -4,7 +4,7 @@ using WeDrone.Web.Core.Interfaces;
 
 namespace WeDrone.Web.Core.Infrastructure.Google
 {
-    public class APIClient : IAddressLookup
+    public class APIClient
     {
         private readonly string APIKey;
 
@@ -13,7 +13,7 @@ namespace WeDrone.Web.Core.Infrastructure.Google
             this.APIKey = key;
         }
 
-        public string GetQueryURI(string query)
+        public string GetAddressQueryURI(string query)
         {
             //URL encode query
             string urlEncodedQuery = HttpUtility.UrlPathEncode(query.Trim());
@@ -29,9 +29,25 @@ namespace WeDrone.Web.Core.Infrastructure.Google
             return url;
         }
 
-        public async Task<AddressResponse> GetAddresses(string query)
+        public string GetAutocompleteQueryURI(string query)
         {
-            string url = this.GetQueryURI(query);
+            //URL encode query
+            string urlEncodedQuery = HttpUtility.UrlPathEncode(query.Trim());
+
+            if (String.IsNullOrEmpty(urlEncodedQuery))
+                return null;
+
+            //build URL string for API call
+            string baseURI = "https://maps.googleapis.com/maps/api/place/autocomplete/json";
+            string queryString = "?input={0}&location=43.71718%2C-79.38704&radius=50000&strictbounds=true&fields=place_id&key={1}";
+            string url = String.Format(baseURI + queryString, urlEncodedQuery, this.APIKey);
+
+            return url;
+        }
+
+        public async Task<AddressResponse> GetAddress(string query)
+        {
+            string url = this.GetAddressQueryURI(query);
 
             if (String.IsNullOrEmpty(url))
                 return null;
@@ -40,6 +56,20 @@ namespace WeDrone.Web.Core.Infrastructure.Google
             {
                 string response = await client.GetStringAsync(url);
                 return JsonSerializer.Deserialize<AddressResponse>(response);
+            }
+        }
+
+        public async Task<PredictionResponse> GetPredictions(string query)
+        {
+            string url = this.GetAutocompleteQueryURI(query);
+
+            if (String.IsNullOrEmpty(url))
+                return null;
+
+            using (var client = new HttpClient())
+            {
+                string response = await client.GetStringAsync(url);
+                return JsonSerializer.Deserialize<PredictionResponse>(response);
             }
         }
     }

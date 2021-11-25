@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using WeDrone.Web.Core.Interfaces;
 using WeDrone.Web.Models;
 
 namespace WeDrone.Web.Controllers
@@ -16,11 +17,11 @@ namespace WeDrone.Web.Controllers
             return View();
         }
 
-        public IActionResult Locations(string query)
+        public async Task<IActionResult> FindAddress([FromServices]IAddressLookup addressFinder, string query)
         {
+            var addresses = await addressFinder.Find(query);
 
-
-            throw new NotImplementedException();
+            return Ok(Json(addresses));
         }
 
         

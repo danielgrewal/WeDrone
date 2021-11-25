@@ -1,4 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using WeDrone.Web.Core.Infrastructure;
+using WeDrone.Web.Core.Infrastructure.Google;
+using WeDrone.Web.Core.Interfaces;
 using WeDrone.Web.Core.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,8 +14,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContextPool<WeDroneContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("WeDroneContext"));
 });
-
-builder.Services.AddServerSideBlazor();
+builder.Services.AddScoped<APIClient>(x => new APIClient(builder.Configuration.GetValue<string>("GoogleAPI:Key")));
+builder.Services.AddScoped<IAddressLookup, AddressLookup>();
 
 var app = builder.Build();
 

@@ -2,5 +2,6 @@
 {
     public interface IAddressLookup
     {
+        Task<List<string>> Find(string query);
     }
 }

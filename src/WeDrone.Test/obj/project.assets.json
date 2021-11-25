@@ -8122,23 +8122,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sylax\\.nuget\\packages\\": {},
+    "C:\\Users\\Usman-Y740\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sylax\\Source\\Repos\\WeDrone\\src\\WeDrone.Test\\WeDrone.Test.csproj",
+      "projectUniqueName": "C:\\Users\\Usman-Y740\\Source\\Repos\\WeDroneApp\\src\\WeDrone.Test\\WeDrone.Test.csproj",
       "projectName": "WeDrone.Test",
-      "projectPath": "C:\\Users\\sylax\\Source\\Repos\\WeDrone\\src\\WeDrone.Test\\WeDrone.Test.csproj",
-      "packagesPath": "C:\\Users\\sylax\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sylax\\Source\\Repos\\WeDrone\\src\\WeDrone.Test\\obj\\",
+      "projectPath": "C:\\Users\\Usman-Y740\\Source\\Repos\\WeDroneApp\\src\\WeDrone.Test\\WeDrone.Test.csproj",
+      "packagesPath": "C:\\Users\\Usman-Y740\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Usman-Y740\\Source\\Repos\\WeDroneApp\\src\\WeDrone.Test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\sylax\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Usman-Y740\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -8153,8 +8153,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\sylax\\Source\\Repos\\WeDrone\\src\\WeDrone.Web\\WeDrone.Web.csproj": {
-              "projectPath": "C:\\Users\\sylax\\Source\\Repos\\WeDrone\\src\\WeDrone.Web\\WeDrone.Web.csproj"
+            "C:\\Users\\Usman-Y740\\Source\\Repos\\WeDroneApp\\src\\WeDrone.Web\\WeDrone.Web.csproj": {
+              "projectPath": "C:\\Users\\Usman-Y740\\Source\\Repos\\WeDroneApp\\src\\WeDrone.Web\\WeDrone.Web.csproj"
             }
           }
         }
