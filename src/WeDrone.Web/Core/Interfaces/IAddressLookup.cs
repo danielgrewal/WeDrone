@@ -2,6 +2,5 @@
 {
     public interface IAddressLookup
     {
-        Task<AddressResponse>
     }
 }
