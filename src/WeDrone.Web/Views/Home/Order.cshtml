@@ -1,8 +1,13 @@
 ﻿@{
-    ViewData["Title"] = "Start A Delivery Order";
+    ViewData["Title"] = "Create Delivery Order";
 }
 <h1>@ViewData["Title"]</h1>
 <br />
+<style>
+   label {
+        font-weight: bold;
+    }
+</style>
 <h4>Step 1: Enter the size and weight of the delivery</h4>
 <p>The package must be <b>no more than</b> 1.5 cubic meters in volume and 50 Kg in weight.</p>
 <form name="dimensions">
@@ -14,41 +19,34 @@
     <input type="number" id="height" name="height" value="1"><br><br>
     <label for="weight">Weight:</label>
     <input type="number" id="weight" name="weight" value="1"><br><br>
-    <input type="button" onclick="checkValues()" value="Check"><br>
+    <input type="button" onclick="checkDimensions()" value="Check"><br>
 </form>
 <br />
 <h4>Step 2: Enter the pickup and dropoff delivery locations</h4>
 <p>Must be valid postal addresses in the <b>Greater Toronto Area</b></p>
 <form name="addresses">
     <label for="pickupAddress">Pickup Address:</label>
-    <input type="text" id="pickupAddress" name="pickupAddress" disabled><br><br>
+    <input type="text" id="pickupAddress" name="pickupAddress" size="50" disabled><br><br>
     <label for="dropoffAddress">Dropoff Address:</label>
-    <input type="text" id="dropoffAddress" name="dropoffAddress" disabled><br><br>
+    <input type="text" id="dropoffAddress" name="dropoffAddress" size="50" disabled><br><br>
     <input type="submit" value="Get Quote">
 </form>
 <br />
 <h4>Step 3: Review the delivery order details</h4>
 <p>If you accept the cost and details of the order, then proceed with the delivery order</p>
 <form name="quote">
-    <label for="cost">Cost:</label>
-    <label for="calcCost">CALCULATED COST HERE</label><br><br>
-
-
-
-    <input type="submit" value="Submit Order">
+    <label for="cost">Delivery Distance:</label>
+    <label for="calcCost" style="color:#6aa84f;">SHOW FLIGHT DISTANCE</label><br>
+    <label for="rate">Rate:</label>
+    <label for="rate" style="color:#6aa84f;">SHOW RATE ($/km)</label><br>
+    <label for="rate">Total Cost:</label>
+    <label for="rate" style="color:#f44336;">SHOW COST, DISTANCE x RATE</label><br><br>
+    <input type="button" onclick="window.location.href='/Home/Track'" value="Submit Order">
     <input type="button" onclick="window.location.reload()" value="Start Over">
 </form>
 
-
-
-
-
-
-
-
-
 <script type="text/javascript">
-    function checkValues() {
+    function checkDimensions() {
         let l = document.getElementById("length").value
         let w = document.getElementById("width").value
         let h = document.getElementById("height").value
@@ -65,5 +63,4 @@
             document.getElementById("dropoffAddress").disabled = false
         }
     }
-
 </script>

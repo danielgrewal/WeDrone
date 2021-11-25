@@ -16,6 +16,16 @@ namespace WeDrone.Web.Controllers
             return View();
         }
 
+        public IActionResult Track()
+        {
+            return View();
+        }
+
+        public IActionResult History()
+        {
+            return View();
+        }
+
         public IActionResult Locations(string query)
         {
 
