@@ -1,0 +1,40 @@
+﻿@model LoginModel
+
+<style type="text/css">
+    .login-form-panel {
+        width: 340px;
+        margin: 50px auto;
+    }
+    .login-form-panel form {
+        margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-5">Welcome to WeDrone!</h1>
+    <p>Please login before proceeding to create a delivery order.</p>
+</div>
+<div class="login-form-panel">
+
+    <form action="/Account/Login" method="post">
+        <h2 class="text-center mb-4">Login</h2>   
+        <div class="mb-3">
+            <label asp-for="Username" class="form-label">Username</label>
+            <input asp-for="Username" type="text" class="form-control" autocomplete="off">
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+        <div class="mb-4">
+            <label asp-for="Password" class="form-label">Password</label>
+            <input asp-for="Password" type="password" class="form-control" autocomplete="off">
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div asp-validation-summary="ModelOnly" class="alert alert-fill alert-danger mb-4"></div>
+
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+    </form>
+</div>
