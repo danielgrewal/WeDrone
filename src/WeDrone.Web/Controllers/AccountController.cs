@@ -40,7 +40,7 @@ namespace WeDrone.Web.Controllers
 
             var claims = new List<Claim> 
             {
-                new Claim(ClaimTypes.Name, credentials.Username),
+                new Claim(ClaimTypes.Name, user.Name),
             };
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var principal = new ClaimsPrincipal(identity);
