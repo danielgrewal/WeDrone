@@ -27,11 +27,12 @@ namespace WeDrone.Web.Controllers
             return View();
         }
 
-        public IActionResult Locations(string query)
+        [HttpGet]
+        public async Task<IActionResult> FindAddress([FromServices] IAddressLookup addressFinder, string query)
         {
             var addresses = await addressFinder.Find(query);
 
-            return Ok(Json(addresses));
+            return Ok(addresses);
         }
 
         

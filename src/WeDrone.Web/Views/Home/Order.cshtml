@@ -8,6 +8,12 @@
    label {
         font-weight: bold;
     }
+    .ui-autocomplete
+    {
+        position:absolute;
+        cursor:default;
+        z-index:1001 !important
+    }
 </style>
 <h4>Step 1: Enter the size and weight of the delivery</h4>
 <p>The package must be <b>no more than</b> 1.5 cubic meters in volume and 50 Kg in weight.</p>
@@ -27,9 +33,9 @@
 <p>Must be valid postal addresses in the <b>Greater Toronto Area</b></p>
 <form name="addresses">
     <label for="pickupAddress">Pickup Address:</label>
-    <input type="text" id="pickupAddress" name="pickupAddress" size="50" disabled><br><br>
+    <input class="address" type="text" id="pickupAddress" name="pickupAddress" size="50" autocomplete="off"><br><br>
     <label for="dropoffAddress">Dropoff Address:</label>
-    <input type="text" id="dropoffAddress" name="dropoffAddress" size="50" disabled><br><br>
+    <input class="address" type="text" id="dropoffAddress" name="dropoffAddress" size="50"><br><br>
     <input type="submit" value="Get Quote">
 </form>
 <br />
@@ -64,4 +70,43 @@
             document.getElementById("dropoffAddress").disabled = false
         }
     }
+
+    $(function () {
+        
+        var addresses = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: "/Home/FindAddress?query=%QUERY",
+                wildcard: '%QUERY',
+                transform: function (response) {
+                    return $.map(response, function(address) {
+                        return address
+                    })
+                }
+            },
+            limit: 10
+        });
+
+
+        $('#pickupAddress').typeahead({
+          highlight: true,
+        },
+        {
+          source: addresses,
+          limit: 10
+        });
+
+        $('#dropoffAddress').typeahead({
+          highlight: true,
+        },
+        {
+          source: addresses,
+          limit: 10
+        });
+
+
+    });
+
 </script>
+
