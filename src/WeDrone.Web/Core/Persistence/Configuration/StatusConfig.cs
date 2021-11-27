@@ -11,6 +11,15 @@ namespace WeDrone.Web.Core.Persistence.Configuration
             builder
                 .Property(s => s.Name)
                 .HasMaxLength(50);
+
+            builder.HasData(
+                new Status { StatusId = 1, Name = "Pending Pick-up" },
+                new Status { StatusId = 2, Name = "Order Retrieved" },
+                new Status { StatusId = 3, Name = "In Transit" },
+                new Status { StatusId = 4, Name = "Pending Drop-off" },
+                new Status { StatusId = 5, Name = "Delivered" },
+                new Status { StatusId = 6, Name = "Cancelled" }
+            );
         }
     }
 }

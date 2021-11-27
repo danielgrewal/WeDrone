@@ -23,6 +23,52 @@ namespace WeDrone.Web.Core.Persistence.Configuration
                 .WithMany(l => l.ToFlightlegs)
                 .HasForeignKey(f => f.Toid)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasData(
+                new Flightleg { FlightlegId = 1, FromId = 1, Toid = 2, Distance = 9.98M },
+                new Flightleg { FlightlegId = 2, FromId = 2, Toid = 1, Distance = 9.98M },
+                new Flightleg { FlightlegId = 3, FromId = 1, Toid = 3, Distance = 17.43M },
+                new Flightleg { FlightlegId = 4, FromId = 3, Toid = 1, Distance = 17.43M },
+                new Flightleg { FlightlegId = 5, FromId = 1, Toid = 4, Distance = 19.77M },
+                new Flightleg { FlightlegId = 6, FromId = 4, Toid = 1, Distance = 19.77M },
+                new Flightleg { FlightlegId = 7, FromId = 1, Toid = 5, Distance = 23.48M },
+                new Flightleg { FlightlegId = 8, FromId = 5, Toid = 1, Distance = 23.48M },
+                new Flightleg { FlightlegId = 9, FromId = 1, Toid = 6, Distance = 38.95M },
+                new Flightleg { FlightlegId = 10, FromId = 6, Toid = 1, Distance = 38.95M },
+                new Flightleg { FlightlegId = 11, FromId = 1, Toid = 7, Distance = 65.47M },
+                new Flightleg { FlightlegId = 12, FromId = 7, Toid = 1, Distance = 65.47M },
+                new Flightleg { FlightlegId = 13, FromId = 2, Toid = 3, Distance = 27.13M },
+                new Flightleg { FlightlegId = 14, FromId = 3, Toid = 2, Distance = 27.13M },
+                new Flightleg { FlightlegId = 15, FromId = 2, Toid = 4, Distance = 21.24M },
+                new Flightleg { FlightlegId = 16, FromId = 4, Toid = 2, Distance = 21.24M },
+                new Flightleg { FlightlegId = 17, FromId = 2, Toid = 5, Distance = 28.02M },
+                new Flightleg { FlightlegId = 18, FromId = 5, Toid = 2, Distance = 28.02M },
+                new Flightleg { FlightlegId = 19, FromId = 2, Toid = 6, Distance = 44.85M },
+                new Flightleg { FlightlegId = 20, FromId = 6, Toid = 2, Distance = 44.85M },
+                new Flightleg { FlightlegId = 21, FromId = 2, Toid = 7, Distance = 71.51M },
+                new Flightleg { FlightlegId = 22, FromId = 7, Toid = 2, Distance = 71.51M },
+                new Flightleg { FlightlegId = 23, FromId = 3, Toid = 4, Distance = 23.67M },
+                new Flightleg { FlightlegId = 24, FromId = 4, Toid = 3, Distance = 23.67M },
+                new Flightleg { FlightlegId = 25, FromId = 3, Toid = 5, Distance = 20.05M },
+                new Flightleg { FlightlegId = 26, FromId = 5, Toid = 3, Distance = 20.05M },
+                new Flightleg { FlightlegId = 27, FromId = 3, Toid = 6, Distance = 28.64M },
+                new Flightleg { FlightlegId = 28, FromId = 6, Toid = 3, Distance = 28.64M },
+                new Flightleg { FlightlegId = 29, FromId = 3, Toid = 7, Distance = 53.11M },
+                new Flightleg { FlightlegId = 30, FromId = 7, Toid = 3, Distance = 53.11M },
+                new Flightleg { FlightlegId = 31, FromId = 4, Toid = 5, Distance = 9.15M },
+                new Flightleg { FlightlegId = 32, FromId = 5, Toid = 4, Distance = 9.15M },
+                new Flightleg { FlightlegId = 33, FromId = 4, Toid = 6, Distance = 25.81M },
+                new Flightleg { FlightlegId = 34, FromId = 6, Toid = 4, Distance = 25.81M },
+                new Flightleg { FlightlegId = 35, FromId = 4, Toid = 7, Distance = 51.80M },
+                new Flightleg { FlightlegId = 36, FromId = 7, Toid = 4, Distance = 51.80M },
+                new Flightleg { FlightlegId = 37, FromId = 5, Toid = 6, Distance = 17.11M },
+                new Flightleg { FlightlegId = 38, FromId = 6, Toid = 5, Distance = 17.11M },
+                new Flightleg { FlightlegId = 39, FromId = 5, Toid = 7, Distance = 43.60M },
+                new Flightleg { FlightlegId = 40, FromId = 7, Toid = 5, Distance = 43.60M },
+                new Flightleg { FlightlegId = 41, FromId = 6, Toid = 7, Distance = 26.68M },
+                new Flightleg { FlightlegId = 42, FromId = 7, Toid = 6, Distance = 26.68M }
+            );
+
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     public class User
     {
-        protected User()
+        public User()
         {
             this.Orders = new List<Order>();
         }

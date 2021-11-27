@@ -70,7 +70,7 @@
             datumTokenizer: Bloodhound.tokenizers.whitespace,
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             remote: {
-                url: "/Home/FindAddress?query=%QUERY",
+                url: "/Orders/FindAddress?query=%QUERY",
                 wildcard: '%QUERY',
                 transform: function (response) {
                     return $.map(response, function(address) {

@@ -2,7 +2,7 @@
 {
     public class FlightRoute
     {
-        protected FlightRoute()
+        public FlightRoute()
         {
             this.Orders = new List<Order>();
         }
