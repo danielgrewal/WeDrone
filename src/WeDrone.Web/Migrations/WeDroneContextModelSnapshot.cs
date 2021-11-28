@@ -289,14 +289,14 @@ namespace WeDrone.Web.Migrations
                         new
                         {
                             FlightlegId = 35,
-                            Distance = 51.80m,
+                            Distance = 51.8m,
                             FromId = 4,
                             Toid = 7
                         },
                         new
                         {
                             FlightlegId = 36,
-                            Distance = 51.80m,
+                            Distance = 51.8m,
                             FromId = 7,
                             Toid = 4
                         },
@@ -317,14 +317,14 @@ namespace WeDrone.Web.Migrations
                         new
                         {
                             FlightlegId = 39,
-                            Distance = 43.60m,
+                            Distance = 43.6m,
                             FromId = 5,
                             Toid = 7
                         },
                         new
                         {
                             FlightlegId = 40,
-                            Distance = 43.60m,
+                            Distance = 43.6m,
                             FromId = 7,
                             Toid = 5
                         },

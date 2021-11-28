@@ -11,7 +11,7 @@
         public int FlightlegId { get; set; }
         public int FromId { get; set; }
         public int Toid { get; set; }
-        public decimal Distance { get; set; }
+        public double Distance { get; set; }
 
         public virtual Location From { get; set; }
         public virtual Location To { get; set; }

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using WeDrone.Web.Core.Common;
 using WeDrone.Web.Core.Infrastructure;
 using WeDrone.Web.Core.Infrastructure.Google;
 using WeDrone.Web.Core.Interfaces;
@@ -15,9 +16,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContextPool<WeDroneContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("WeDroneContext"));
 });
-
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
+builder.Services.Configure<DroneOptions>(builder.Configuration.GetSection(DroneOptions.DroneSettings));
 builder.Services.AddScoped<APIClient>(x => new APIClient(builder.Configuration.GetValue<string>("GoogleAPI:Key")));
 builder.Services.AddScoped<IAddressLookup, AddressLookup>();
 
