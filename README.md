@@ -9,6 +9,31 @@ Karanvir Bhogal 100748973</br>
 Daniel Grewal 100768376 *(Team Lead)*</br>
 Mohammed Adnan Hashmi 100753115</br>
 
+## Installation Instructions
+
+**Set up ASP.NET Core**
+1.	Navigate to https://dotnet.microsoft.com/download. 
+2.	Download .NET SDK x64.
+3.	Install the downloaded executable file.
+**Set up Microsoft SQL Server**
+1.	Navigate to https://www.microsoft.com/en-us/sql-server/sql-server-downloads.
+2.	Download the SQL Server 2019 Developer Edition by clicking on the Download Now button under “Developer”.
+3.	Run the downloaded executable file and follow the instructions to perform a Basic Installation.
+**Set up Visual Studio (Note: this is a different product than Visual Studio Code)**
+1.	Navigate to https://visualstudio.microsoft.com/ and download Visual Studio Community 2022.
+2.	Run the downloaded executable file and follow the instructions; please ensure you minimally select the select the ASP.NET and web development workload.
+**Clone Repository and Open the Project**
+1.	Using git command-line tools, clone the https://github.com/danielgrewal/WeDrone.git repository. The repository can also be found on https://github.com/danielgrewal/WeDrone if the git command-line tools are not available. 
+2.	Open the project folder and run WeDrone.sln under the src sub-folder. This will open Visual Studio. This window can be minimized for now to set up the database.
+**Set up Database and API Connection**
+1.	Open Microsoft SQL Server Management Studio and run WeDrone.sql in a new query window to create the initial database. This file can be found in the root directory of the repository.
+2.	Once the database is created, open up the minimized Visual Studio window and under the WeDrone.Web project, open the appsettings.json file. 
+3.	Add the database connection string between the double quotes on the line that says "WeDroneContext": "" to point to the database.
+4.	For the application to function a Google API key will need to be provided on the line that says "Key": "InsertYourAPIKeyHere" by replacing InsertYourAPIKeyHere with the actual key. The application will not function if the correct connection string or an API key are not provided. 
+**Run Application**
+1.	At the top of the Visual Studio IDE, press the play button and a browser window will launch with the application running. Use the username “usman” and the password “password” for testing purposes.
+
+
 ## Link to SOFE3650 Project Progress Report Document (Deliverable 2)
 https://github.com/danielgrewal/WeDrone/blob/main/SOFE3650_Project_Progress_Report.pdf
 
