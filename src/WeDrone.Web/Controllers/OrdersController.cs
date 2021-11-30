@@ -23,6 +23,7 @@ namespace WeDrone.Web.Controllers
 
         public IActionResult Index()
         {
+            //var orders = _context.FromSqlRaw("EXEC dbo.sp_GetFlightPlan {0}, {1}",
             return View();
         }
         public IActionResult Create()
@@ -35,13 +36,17 @@ namespace WeDrone.Web.Controllers
         public IActionResult Order(int id)
         {
             var order = _context.Orders
-                .Include(o => o.User)
-                .Include(o => o.HistoryEntries)
+                .Include(o => o.User)         
                 .Include(o => o.Origin)
                 .Include(o => o.Destination)
                 .FirstOrDefault(o => o.OrderId == id);
 
-            var model = new ViewOrderModel(order, order.User, order.Origin, order.Destination, order.HistoryEntries.ToList());
+            var orderHistory = _context.OrderHistory
+                .Where(oh => oh.Orderid == id)
+                .Include(oh => oh.From)
+                .ToList();
+
+            var model = new ViewOrderModel(order, orderHistory);
                 
             return View(model);
         }

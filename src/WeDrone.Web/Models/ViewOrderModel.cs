@@ -4,12 +4,12 @@ namespace WeDrone.Web.Models
 {
     public class ViewOrderModel
     {
-        public ViewOrderModel(Order order, User user, Location origin, Location destination, List<OrderHistory> orderHistory)
+        public ViewOrderModel(Order order, List<OrderHistory> orderHistory)
         {
             this.Order = order;
-            this.User = user;
-            this.Origin = origin;
-            this.Destination = destination;
+            this.User = order.User;
+            this.Origin = order.Origin;
+            this.Destination = order.Destination;
             this.OrderHistory = orderHistory;
         }
 

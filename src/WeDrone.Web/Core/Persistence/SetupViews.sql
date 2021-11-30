@@ -7,18 +7,18 @@ CREATE VIEW vw_ShowAllOrders AS
 -- current status, and their origin/destination
 -- and presents it in a user readable manner.
 
-SELECT o.OrderId AS 'Order Id', CONCAT(u.FirstName,' ', u.LastName) AS
+SELECT o.OrderId AS 'Order Id', u.Name AS
 'Ordered By',
-lorigin.FullAddress AS 'Package Pick-up',
-ldestination.FullAddress AS 'Package Destination', s.StatusName AS 'Current
+lorigin.Address AS 'Package Pick-up',
+ldestination.Address AS 'Package Destination', s.Name AS 'Current
 Status',
 o.OrderCreated AS 'Ordered On'
 FROM Orders o
 INNER JOIN Users u ON o.UserId = u.UserId
 INNER JOIN OrderHistory oh ON oh.OrderId = o.OrderId
-INNER JOIN Status s ON s.StatusId = oh.OrderStatus
-INNER JOIN Locations lorigin ON lorigin.LocationId = o.Origin
-INNER JOIN Locations ldestination ON ldestination.LocationId = o.Destination
+INNER JOIN Status s ON s.StatusId = oh.StatusId
+INNER JOIN Locations lorigin ON lorigin.LocationId = o.OrderId
+INNER JOIN Locations ldestination ON ldestination.LocationId = o.DestinationId
 WHERE ValidTo = '9999-12-31';
 GO
 
