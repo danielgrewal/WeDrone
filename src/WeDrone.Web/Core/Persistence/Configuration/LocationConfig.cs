@@ -24,6 +24,10 @@ namespace WeDrone.Web.Core.Persistence.Configuration
                 .Property(l => l.Address)
                 .HasMaxLength(255);
 
+            builder
+                .HasIndex(l => l.Address)
+                .IsUnique();
+
 
             builder.HasData(
                 new Location 
@@ -88,25 +92,25 @@ namespace WeDrone.Web.Core.Persistence.Configuration
                     Longitude = -78.89679613001036M,
                     Address = "2000 Simcoe St N, Oshawa, ON L1G 0C5",
                     IsDroneFacility = true
-                },
-                new Location
-                {
-                    LocationId = 8,
-                    Name = "Lowes Brampton",
-                    Latitude = 43.6783549M,
-                    Longitude = -79.7233365M,
-                    Address = "370 Kennedy Rd S, Brampton, ON L6W 4V2",
-                    IsDroneFacility = false
-                },
-                new Location
-                {
-                    LocationId = 9,
-                    Name = "Lowes Whitby",
-                    Latitude = 43.9259581M,
-                    Longitude = -78.9186847M,
-                    Address = "4005 Garrard Rd, Whitby, ON L1R 0J1",
-                    IsDroneFacility = false
                 }
+                //new Location
+                //{
+                //    LocationId = 8,
+                //    Name = "Lowes Brampton",
+                //    Latitude = 43.6783549M,
+                //    Longitude = -79.7233365M,
+                //    Address = "370 Kennedy Rd S, Brampton, ON L6W 4V2",
+                //    IsDroneFacility = false
+                //},
+                //new Location
+                //{
+                //    LocationId = 9,
+                //    Name = "Lowes Whitby",
+                //    Latitude = 43.9259581M,
+                //    Longitude = -78.9186847M,
+                //    Address = "4005 Garrard Rd, Whitby, ON L1R 0J1",
+                //    IsDroneFacility = false
+                //}
             );
 
         }

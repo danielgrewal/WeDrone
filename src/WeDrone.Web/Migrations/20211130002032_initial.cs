@@ -61,7 +61,7 @@ namespace WeDrone.Web.Migrations
                     FlightlegId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FromId = table.Column<int>(type: "int", nullable: false),
-                    Toid = table.Column<int>(type: "int", nullable: false),
+                    ToId = table.Column<int>(type: "int", nullable: false),
                     Distance = table.Column<decimal>(type: "decimal(10,2)", nullable: false)
                 },
                 constraints: table =>
@@ -74,8 +74,8 @@ namespace WeDrone.Web.Migrations
                         principalColumn: "LocationId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Flightlegs_Locations_Toid",
-                        column: x => x.Toid,
+                        name: "FK_Flightlegs_Locations_ToId",
+                        column: x => x.ToId,
                         principalTable: "Locations",
                         principalColumn: "LocationId",
                         onDelete: ReferentialAction.Restrict);
@@ -108,7 +108,7 @@ namespace WeDrone.Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "FlightRouteStep",
+                name: "FlightRouteSteps",
                 columns: table => new
                 {
                     FlightRouteId = table.Column<int>(type: "int", nullable: false),
@@ -118,15 +118,15 @@ namespace WeDrone.Web.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FlightRouteStep", x => new { x.FlightRouteId, x.CurrentLegId });
+                    table.PrimaryKey("PK_FlightRouteSteps", x => new { x.FlightRouteId, x.CurrentLegId });
                     table.ForeignKey(
-                        name: "FK_FlightRouteStep_Flightlegs_CurrentLegId",
+                        name: "FK_FlightRouteSteps_Flightlegs_CurrentLegId",
                         column: x => x.CurrentLegId,
                         principalTable: "Flightlegs",
                         principalColumn: "FlightlegId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_FlightRouteStep_Flightlegs_NextLegId",
+                        name: "FK_FlightRouteSteps_Flightlegs_NextLegId",
                         column: x => x.NextLegId,
                         principalTable: "Flightlegs",
                         principalColumn: "FlightlegId",
@@ -142,10 +142,11 @@ namespace WeDrone.Web.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     OriginId = table.Column<int>(type: "int", nullable: false),
                     DestinationId = table.Column<int>(type: "int", nullable: false),
-                    FlightRouteId = table.Column<int>(type: "int", nullable: false),
+                    FlightRouteId = table.Column<int>(type: "int", nullable: true),
                     Weight = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     Volume = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    OrderCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Cost = table.Column<double>(type: "float", nullable: false),
+                    OrderCreated = table.Column<DateTime>(type: "datetime2", nullable: true),
                     OrderFilled = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -155,8 +156,7 @@ namespace WeDrone.Web.Migrations
                         name: "FK_Orders_FlightRoutes_FlightRouteId",
                         column: x => x.FlightRouteId,
                         principalTable: "FlightRoutes",
-                        principalColumn: "FlightRouteId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "FlightRouteId");
                     table.ForeignKey(
                         name: "FK_Orders_Locations_DestinationId",
                         column: x => x.DestinationId,
@@ -184,10 +184,10 @@ namespace WeDrone.Web.Migrations
                     Orderid = table.Column<int>(type: "int", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ValidTo = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FromId = table.Column<int>(type: "int", nullable: false),
-                    ToId = table.Column<int>(type: "int", nullable: false),
+                    FromId = table.Column<int>(type: "int", nullable: true),
+                    ToId = table.Column<int>(type: "int", nullable: true),
                     StatusId = table.Column<int>(type: "int", nullable: false),
-                    Distance = table.Column<decimal>(type: "decimal(10,2)", nullable: false)
+                    Distance = table.Column<decimal>(type: "decimal(10,2)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -229,9 +229,7 @@ namespace WeDrone.Web.Migrations
                     { 4, "290 Bremner Blvd, Toronto, ON M5V 3L9", true, 43.64272145936629m, -79.38704607234244m, "CN Tower" },
                     { 5, "770 Don Mills Rd., North York, ON M3C 1T3", true, 43.71718851953277m, -79.33851344772478m, "Ontario Science Centre" },
                     { 6, "2000 Meadowvale Rd, Toronto, ON M1B 5K7", true, 43.82096417612802m, -79.1812287514316m, "Toronto Zoo" },
-                    { 7, "2000 Simcoe St N, Oshawa, ON L1G 0C5", true, 43.94565647325994m, -78.89679613001036m, "Ontario Technology University" },
-                    { 8, "370 Kennedy Rd S, Brampton, ON L6W 4V2", false, 43.6783549m, -79.7233365m, "Lowes Brampton" },
-                    { 9, "4005 Garrard Rd, Whitby, ON L1R 0J1", false, 43.9259581m, -78.9186847m, "Lowes Whitby" }
+                    { 7, "2000 Simcoe St N, Oshawa, ON L1G 0C5", true, 43.94565647325994m, -78.89679613001036m, "Ontario Technology University" }
                 });
 
             migrationBuilder.InsertData(
@@ -309,7 +307,7 @@ namespace WeDrone.Web.Migrations
 
             migrationBuilder.InsertData(
                 table: "Flightlegs",
-                columns: new[] { "FlightlegId", "Distance", "FromId", "Toid" },
+                columns: new[] { "FlightlegId", "Distance", "FromId", "ToId" },
                 values: new object[,]
                 {
                     { 1, 9.98m, 1, 2 },
@@ -357,7 +355,7 @@ namespace WeDrone.Web.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "FlightRouteStep",
+                table: "FlightRouteSteps",
                 columns: new[] { "CurrentLegId", "FlightRouteId", "IsInitialLeg", "NextLegId" },
                 values: new object[,]
                 {
@@ -406,7 +404,7 @@ namespace WeDrone.Web.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "FlightRouteStep",
+                table: "FlightRouteSteps",
                 columns: new[] { "CurrentLegId", "FlightRouteId", "IsInitialLeg", "NextLegId" },
                 values: new object[,]
                 {
@@ -448,9 +446,9 @@ namespace WeDrone.Web.Migrations
                 column: "FromId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Flightlegs_Toid",
+                name: "IX_Flightlegs_ToId",
                 table: "Flightlegs",
-                column: "Toid");
+                column: "ToId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FlightRoutes_RouteEndId",
@@ -463,14 +461,21 @@ namespace WeDrone.Web.Migrations
                 column: "RouteStartId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FlightRouteStep_CurrentLegId",
-                table: "FlightRouteStep",
+                name: "IX_FlightRouteSteps_CurrentLegId",
+                table: "FlightRouteSteps",
                 column: "CurrentLegId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FlightRouteStep_NextLegId",
-                table: "FlightRouteStep",
+                name: "IX_FlightRouteSteps_NextLegId",
+                table: "FlightRouteSteps",
                 column: "NextLegId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Locations_Address",
+                table: "Locations",
+                column: "Address",
+                unique: true,
+                filter: "[Address] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderHistory_FromId",
@@ -517,7 +522,7 @@ namespace WeDrone.Web.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "FlightRouteStep");
+                name: "FlightRouteSteps");
 
             migrationBuilder.DropTable(
                 name: "OrderHistory");

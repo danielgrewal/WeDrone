@@ -28,7 +28,7 @@ namespace WeDrone.Test.Infrastructure
             string query = "101 Bloor Street";
 
             //Act
-            string actual = this.mockClient.GetAddressQueryURI(query);
+            string actual = this.mockClient.GetAddressQueryURI(query, false);
 
             //Assert
             string expected = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=101%20Bloor%20Street&inputtype=textquery&fields=formatted_address,place_id&key=testkey";
@@ -42,7 +42,7 @@ namespace WeDrone.Test.Infrastructure
             string query = " 101 Bloor Street ";
 
             //Act
-            string actual = this.mockClient.GetAddressQueryURI(query);
+            string actual = this.mockClient.GetAddressQueryURI(query, false);
 
             //Assert
             string expected = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=101%20Bloor%20Street&inputtype=textquery&fields=formatted_address,place_id&key=testkey";
@@ -56,7 +56,7 @@ namespace WeDrone.Test.Infrastructure
             string query = "  ";
 
             //Act
-            string actual = this.mockClient.GetAddressQueryURI(query);
+            string actual = this.mockClient.GetAddressQueryURI(query, false);
 
             //Assert
             actual.Should().BeNull("because the query is empty");
@@ -69,7 +69,7 @@ namespace WeDrone.Test.Infrastructure
             string query = "  ";
 
             //Act
-            string actual = this.mockClient.GetAddressQueryURI(query);
+            string actual = this.mockClient.GetAddressQueryURI(query, false);
 
             //Assert
             actual.Should().BeNull("because the query is empty");
@@ -82,7 +82,7 @@ namespace WeDrone.Test.Infrastructure
             string query = " 101 Bloor Street East ";
 
             //Act
-            var actual = await client.GetAddress(query);
+            var actual = await client.GetAddress(query, false);
 
             //Assert
             //actual.candidates.First().formatted_address.Should().Be("101 Bloor St E, Oshawa, ON L1H 3M3, Canada");

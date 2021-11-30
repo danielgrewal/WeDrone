@@ -1,0 +1,11 @@
+﻿@model ViewOrderModel
+
+@Model.Origin.Address
+<br />
+@Model.Destination.Address
+
+@foreach (var entry in Model.OrderHistory)
+{
+    <div>entry.From</div>
+    <div>entry.To</div>
+}

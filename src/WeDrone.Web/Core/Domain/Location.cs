@@ -14,6 +14,15 @@
             this.ToHistory = new List<OrderHistory>();
         }
 
+        public Location(string name, string address, decimal latitude, decimal longitude) : this()
+        {
+            Name = name;
+            Latitude = latitude;
+            Longitude = longitude;
+            Address = address;
+            IsDroneFacility = false;
+        }
+
         public int LocationId { get; set; }
         public string Name { get; set; }
         public decimal Latitude {get;set;} // Set scale

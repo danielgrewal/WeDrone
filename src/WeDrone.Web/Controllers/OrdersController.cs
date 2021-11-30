@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using WeDrone.Web.Core.Common;
 using WeDrone.Web.Core.Interfaces;
@@ -24,29 +25,74 @@ namespace WeDrone.Web.Controllers
         {
             return View();
         }
-
         public IActionResult Create()
         {
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Create(CreateOrderModel orderModel)
+        [HttpGet]
+        [Route("/Orders/{id:int}")]
+        public IActionResult Order(int id)
         {
-            //if (!ModelState.IsValid)
-            //    return View(model);
+            var order = _context.Orders
+                .Include(o => o.User)
+                .Include(o => o.HistoryEntries)
+                .Include(o => o.Origin)
+                .Include(o => o.Destination)
+                .FirstOrDefault(o => o.OrderId == id);
 
-            //var result = orderModel
-            //var result = orderModel;
+            var model = new ViewOrderModel(order, order.User, order.Origin, order.Destination, order.HistoryEntries.ToList());
+                
+            return View(model);
+        }
 
-            throw new NotImplementedException();
+        [HttpPost]
+        public async Task<IActionResult> Create([FromServices] IAddressLookup addressFinder, CreateOrderModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            if (model.Weight > _options.MaxWeight)
+                ModelState.AddModelError(String.Empty, $"The package cannot weigh more than {_options.MaxWeight} kg");
+
+            if (model.Length * model.Width * model.Height > _options.MaxVolume)
+                ModelState.AddModelError(String.Empty, $"The package cannot be more than {_options.MaxVolume} cubic meters in volume.");
+
+            // Get pick-up/drop-off locations
+            var pickupLocationResult = await model.GetLocation(_context, addressFinder, model.PickupAddress);
+            var dropoffLocationResult = await model.GetLocation(_context, addressFinder, model.DropoffAddress);
+
+            if (!pickupLocationResult.IsSuccess)
+                ModelState.AddModelError(model.PickupAddress, pickupLocationResult.FailureReason);
+
+            if (!dropoffLocationResult.IsSuccess)
+                ModelState.AddModelError(model.DropoffAddress, dropoffLocationResult.FailureReason);
+
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var pickupLocation = pickupLocationResult.Payload;
+            var dropoffLocation = dropoffLocationResult.Payload;
+
+            var flightPlanner = new FlightPlanner(_context, _options, pickupLocation, dropoffLocation);
+            var flightPlanResult = flightPlanner.GetFlightPlan();
+
+            if (!flightPlanResult.IsSuccess)
+            {
+                ModelState.AddModelError("", flightPlanResult.FailureReason);
+                return View(model);
+            }
+
+            var username = HttpContext.User.Identity.Name;
+            var order = model.CreateOrder(_context, _options, flightPlanResult.Payload, flightPlanner.FlightRouteId, username);
+
+            return RedirectToAction("Order", "Orders", new { id = order.OrderId });
         }
 
         [HttpGet]
         public async Task<IActionResult> FindAddress([FromServices] IAddressLookup addressFinder, string query)
         {
             var addresses = await addressFinder.Find(query);
-
             return Ok(addresses);
         }
     }

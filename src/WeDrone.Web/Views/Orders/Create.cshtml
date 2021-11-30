@@ -28,10 +28,12 @@
     <label asp-for="Weight">Weight:</label>
     <input asp-for="Weight" value="1" type="number" autocomplete="off">
     <span asp-validation-for="Weight" class="text-danger"></span>
-    <br><br><br />
+    <br><br>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <br />
 
-<h4>Step 2: Enter the pickup and dropoff delivery locations</h4>
-<p>Must be valid postal addresses in the <b>Greater Toronto Area</b></p>
+    <h4>Step 2: Enter the pickup and dropoff delivery locations</h4>
+    <p>Must be valid postal addresses in the <b>Greater Toronto Area</b></p>
     <label asp-for="PickupAddress">Pickup Address:</label>
     <input asp-for="PickupAddress" type="text" id="pickupAddress" autocomplete="off" />
     <br><br>
@@ -41,9 +43,9 @@
     <br><br>
     <button type="submit">Get Quote</button>
 
-<br />
-<h4>Step 3: Review the delivery order details</h4>
-<p>If you accept the cost and details of the order, then proceed with the delivery order</p>
+    <br />
+    <h4>Step 3: Review the delivery order details</h4>
+    <p>If you accept the cost and details of the order, then proceed with the delivery order</p>
 
     <label for="cost">Delivery Distance:</label>
     <label for="calcCost" style="color:#6aa84f;">SHOW FLIGHT DISTANCE</label><br>

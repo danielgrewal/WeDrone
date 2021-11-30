@@ -13,7 +13,7 @@ namespace WeDrone.Web.Core.Infrastructure.Google
             this.APIKey = key;
         }
 
-        public string GetAddressQueryURI(string query)
+        public string GetAddressQueryURI(string query, bool includeGeometry)
         {
             //URL encode query
             string urlEncodedQuery = HttpUtility.UrlPathEncode(query.Trim());
@@ -22,9 +22,16 @@ namespace WeDrone.Web.Core.Infrastructure.Google
                 return null;
 
             //build URL string for API call
+            //string baseURI = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json";
+            //string queryString = "?input={0}&inputtype=textquery&fields=formatted_address,geometry&key={1}";
+            //string url = String.Format(baseURI + queryString, urlEncodedQuery, this.APIKey);
+
             string baseURI = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json";
-            string queryString = "?input={0}&inputtype=textquery&fields=formatted_address,place_id&key={1}";
-            string url = String.Format(baseURI + queryString, urlEncodedQuery, this.APIKey);
+            string inputString = "?input={0}&inputtype=textquery&fields=formatted_address";
+            if (includeGeometry)
+                inputString += ",geometry,name";
+            string keyString = "&key={1}";
+            string url = String.Format(baseURI + inputString + keyString, urlEncodedQuery, this.APIKey);
 
             return url;
         }
@@ -45,9 +52,9 @@ namespace WeDrone.Web.Core.Infrastructure.Google
             return url;
         }
 
-        public async Task<AddressResponse> GetAddress(string query)
+        public async Task<AddressResponse> GetAddress(string query, bool includeGeometry)
         {
-            string url = this.GetAddressQueryURI(query);
+            string url = this.GetAddressQueryURI(query, includeGeometry);
 
             if (String.IsNullOrEmpty(url))
                 return null;

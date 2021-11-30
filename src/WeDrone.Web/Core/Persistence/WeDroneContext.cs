@@ -12,7 +12,7 @@ namespace WeDrone.Web.Core.Persistence
 
         public DbSet<Flightleg> Flightlegs { get; set; }
         public DbSet<FlightRoute> FlightRoutes { get; set; }
-        public DbSet<FlightRouteStep> FlightRouteStep { get; set; }
+        public DbSet<FlightRouteStep> FlightRouteSteps { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderHistory> OrderHistory { get; set; }

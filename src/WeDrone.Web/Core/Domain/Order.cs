@@ -2,14 +2,20 @@
 {
     public class Order
     {
+        public Order()
+        {
+            this.HistoryEntries = new List<OrderHistory>();
+        }
+
         public int OrderId { get; set; }
         public int UserId { get; set; }
         public int OriginId { get; set; }
         public int DestinationId { get; set; }
-        public int FlightRouteId { get; set; }
-        public decimal Weight { get; set; }
-        public decimal Volume { get; set; }
-        public DateTime OrderCreated { get; set; }
+        public int? FlightRouteId { get; set; }
+        public double Weight { get; set; }
+        public double Volume { get; set; }
+        public double Cost { get; set; }
+        public DateTime? OrderCreated { get; set; }
         public DateTime? OrderFilled { get; set; }
 
         public virtual User User { get; set; }

@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeDrone.Web", "WeDrone.Web\WeDrone.Web.csproj", "{8F62B586-21EB-4C47-A612-659EA7A21829}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeDrone.Test", "WeDrone.Test\WeDrone.Test.csproj", "{0D7D5819-F934-465B-877E-297756332DF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeDrone.Test", "WeDrone.Test\WeDrone.Test.csproj", "{0D7D5819-F934-465B-877E-297756332DF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -36,14 +36,14 @@ namespace WeDrone.Web.Migrations
                     b.Property<int>("FromId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Toid")
+                    b.Property<int>("ToId")
                         .HasColumnType("int");
 
                     b.HasKey("FlightlegId");
 
                     b.HasIndex("FromId");
 
-                    b.HasIndex("Toid");
+                    b.HasIndex("ToId");
 
                     b.ToTable("Flightlegs");
 
@@ -53,294 +53,294 @@ namespace WeDrone.Web.Migrations
                             FlightlegId = 1,
                             Distance = 9.98m,
                             FromId = 1,
-                            Toid = 2
+                            ToId = 2
                         },
                         new
                         {
                             FlightlegId = 2,
                             Distance = 9.98m,
                             FromId = 2,
-                            Toid = 1
+                            ToId = 1
                         },
                         new
                         {
                             FlightlegId = 3,
                             Distance = 17.43m,
                             FromId = 1,
-                            Toid = 3
+                            ToId = 3
                         },
                         new
                         {
                             FlightlegId = 4,
                             Distance = 17.43m,
                             FromId = 3,
-                            Toid = 1
+                            ToId = 1
                         },
                         new
                         {
                             FlightlegId = 5,
                             Distance = 19.77m,
                             FromId = 1,
-                            Toid = 4
+                            ToId = 4
                         },
                         new
                         {
                             FlightlegId = 6,
                             Distance = 19.77m,
                             FromId = 4,
-                            Toid = 1
+                            ToId = 1
                         },
                         new
                         {
                             FlightlegId = 7,
                             Distance = 23.48m,
                             FromId = 1,
-                            Toid = 5
+                            ToId = 5
                         },
                         new
                         {
                             FlightlegId = 8,
                             Distance = 23.48m,
                             FromId = 5,
-                            Toid = 1
+                            ToId = 1
                         },
                         new
                         {
                             FlightlegId = 9,
                             Distance = 38.95m,
                             FromId = 1,
-                            Toid = 6
+                            ToId = 6
                         },
                         new
                         {
                             FlightlegId = 10,
                             Distance = 38.95m,
                             FromId = 6,
-                            Toid = 1
+                            ToId = 1
                         },
                         new
                         {
                             FlightlegId = 11,
                             Distance = 65.47m,
                             FromId = 1,
-                            Toid = 7
+                            ToId = 7
                         },
                         new
                         {
                             FlightlegId = 12,
                             Distance = 65.47m,
                             FromId = 7,
-                            Toid = 1
+                            ToId = 1
                         },
                         new
                         {
                             FlightlegId = 13,
                             Distance = 27.13m,
                             FromId = 2,
-                            Toid = 3
+                            ToId = 3
                         },
                         new
                         {
                             FlightlegId = 14,
                             Distance = 27.13m,
                             FromId = 3,
-                            Toid = 2
+                            ToId = 2
                         },
                         new
                         {
                             FlightlegId = 15,
                             Distance = 21.24m,
                             FromId = 2,
-                            Toid = 4
+                            ToId = 4
                         },
                         new
                         {
                             FlightlegId = 16,
                             Distance = 21.24m,
                             FromId = 4,
-                            Toid = 2
+                            ToId = 2
                         },
                         new
                         {
                             FlightlegId = 17,
                             Distance = 28.02m,
                             FromId = 2,
-                            Toid = 5
+                            ToId = 5
                         },
                         new
                         {
                             FlightlegId = 18,
                             Distance = 28.02m,
                             FromId = 5,
-                            Toid = 2
+                            ToId = 2
                         },
                         new
                         {
                             FlightlegId = 19,
                             Distance = 44.85m,
                             FromId = 2,
-                            Toid = 6
+                            ToId = 6
                         },
                         new
                         {
                             FlightlegId = 20,
                             Distance = 44.85m,
                             FromId = 6,
-                            Toid = 2
+                            ToId = 2
                         },
                         new
                         {
                             FlightlegId = 21,
                             Distance = 71.51m,
                             FromId = 2,
-                            Toid = 7
+                            ToId = 7
                         },
                         new
                         {
                             FlightlegId = 22,
                             Distance = 71.51m,
                             FromId = 7,
-                            Toid = 2
+                            ToId = 2
                         },
                         new
                         {
                             FlightlegId = 23,
                             Distance = 23.67m,
                             FromId = 3,
-                            Toid = 4
+                            ToId = 4
                         },
                         new
                         {
                             FlightlegId = 24,
                             Distance = 23.67m,
                             FromId = 4,
-                            Toid = 3
+                            ToId = 3
                         },
                         new
                         {
                             FlightlegId = 25,
                             Distance = 20.05m,
                             FromId = 3,
-                            Toid = 5
+                            ToId = 5
                         },
                         new
                         {
                             FlightlegId = 26,
                             Distance = 20.05m,
                             FromId = 5,
-                            Toid = 3
+                            ToId = 3
                         },
                         new
                         {
                             FlightlegId = 27,
                             Distance = 28.64m,
                             FromId = 3,
-                            Toid = 6
+                            ToId = 6
                         },
                         new
                         {
                             FlightlegId = 28,
                             Distance = 28.64m,
                             FromId = 6,
-                            Toid = 3
+                            ToId = 3
                         },
                         new
                         {
                             FlightlegId = 29,
                             Distance = 53.11m,
                             FromId = 3,
-                            Toid = 7
+                            ToId = 7
                         },
                         new
                         {
                             FlightlegId = 30,
                             Distance = 53.11m,
                             FromId = 7,
-                            Toid = 3
+                            ToId = 3
                         },
                         new
                         {
                             FlightlegId = 31,
                             Distance = 9.15m,
                             FromId = 4,
-                            Toid = 5
+                            ToId = 5
                         },
                         new
                         {
                             FlightlegId = 32,
                             Distance = 9.15m,
                             FromId = 5,
-                            Toid = 4
+                            ToId = 4
                         },
                         new
                         {
                             FlightlegId = 33,
                             Distance = 25.81m,
                             FromId = 4,
-                            Toid = 6
+                            ToId = 6
                         },
                         new
                         {
                             FlightlegId = 34,
                             Distance = 25.81m,
                             FromId = 6,
-                            Toid = 4
+                            ToId = 4
                         },
                         new
                         {
                             FlightlegId = 35,
                             Distance = 51.8m,
                             FromId = 4,
-                            Toid = 7
+                            ToId = 7
                         },
                         new
                         {
                             FlightlegId = 36,
                             Distance = 51.8m,
                             FromId = 7,
-                            Toid = 4
+                            ToId = 4
                         },
                         new
                         {
                             FlightlegId = 37,
                             Distance = 17.11m,
                             FromId = 5,
-                            Toid = 6
+                            ToId = 6
                         },
                         new
                         {
                             FlightlegId = 38,
                             Distance = 17.11m,
                             FromId = 6,
-                            Toid = 5
+                            ToId = 5
                         },
                         new
                         {
                             FlightlegId = 39,
                             Distance = 43.6m,
                             FromId = 5,
-                            Toid = 7
+                            ToId = 7
                         },
                         new
                         {
                             FlightlegId = 40,
                             Distance = 43.6m,
                             FromId = 7,
-                            Toid = 5
+                            ToId = 5
                         },
                         new
                         {
                             FlightlegId = 41,
                             Distance = 26.68m,
                             FromId = 6,
-                            Toid = 7
+                            ToId = 7
                         },
                         new
                         {
                             FlightlegId = 42,
                             Distance = 26.68m,
                             FromId = 7,
-                            Toid = 6
+                            ToId = 6
                         });
                 });
 
@@ -641,7 +641,7 @@ namespace WeDrone.Web.Migrations
 
                     b.HasIndex("NextLegId");
 
-                    b.ToTable("FlightRouteStep");
+                    b.ToTable("FlightRouteSteps");
 
                     b.HasData(
                         new
@@ -1135,6 +1135,10 @@ namespace WeDrone.Web.Migrations
 
                     b.HasKey("LocationId");
 
+                    b.HasIndex("Address")
+                        .IsUnique()
+                        .HasFilter("[Address] IS NOT NULL");
+
                     b.ToTable("Locations");
 
                     b.HasData(
@@ -1200,24 +1204,6 @@ namespace WeDrone.Web.Migrations
                             Latitude = 43.94565647325994m,
                             Longitude = -78.89679613001036m,
                             Name = "Ontario Technology University"
-                        },
-                        new
-                        {
-                            LocationId = 8,
-                            Address = "370 Kennedy Rd S, Brampton, ON L6W 4V2",
-                            IsDroneFacility = false,
-                            Latitude = 43.6783549m,
-                            Longitude = -79.7233365m,
-                            Name = "Lowes Brampton"
-                        },
-                        new
-                        {
-                            LocationId = 9,
-                            Address = "4005 Garrard Rd, Whitby, ON L1R 0J1",
-                            IsDroneFacility = false,
-                            Latitude = 43.9259581m,
-                            Longitude = -78.9186847m,
-                            Name = "Lowes Whitby"
                         });
                 });
 
@@ -1229,13 +1215,16 @@ namespace WeDrone.Web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"), 1L, 1);
 
+                    b.Property<double>("Cost")
+                        .HasColumnType("float");
+
                     b.Property<int>("DestinationId")
                         .HasColumnType("int");
 
-                    b.Property<int>("FlightRouteId")
+                    b.Property<int?>("FlightRouteId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("OrderCreated")
+                    b.Property<DateTime?>("OrderCreated")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("OrderFilled")
@@ -1274,16 +1263,16 @@ namespace WeDrone.Web.Migrations
                     b.Property<DateTime>("ValidFrom")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("Distance")
+                    b.Property<decimal?>("Distance")
                         .HasColumnType("decimal(10,2)");
 
-                    b.Property<int>("FromId")
+                    b.Property<int?>("FromId")
                         .HasColumnType("int");
 
                     b.Property<int>("StatusId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ToId")
+                    b.Property<int?>("ToId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ValidTo")
@@ -1420,7 +1409,7 @@ namespace WeDrone.Web.Migrations
 
                     b.HasOne("WeDrone.Web.Core.Domain.Location", "To")
                         .WithMany("ToFlightlegs")
-                        .HasForeignKey("Toid")
+                        .HasForeignKey("ToId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -1476,9 +1465,7 @@ namespace WeDrone.Web.Migrations
 
                     b.HasOne("WeDrone.Web.Core.Domain.FlightRoute", "FlightRoute")
                         .WithMany("Orders")
-                        .HasForeignKey("FlightRouteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FlightRouteId");
 
                     b.HasOne("WeDrone.Web.Core.Domain.Location", "Origin")
                         .WithMany("OriginOrders")
@@ -1506,8 +1493,7 @@ namespace WeDrone.Web.Migrations
                     b.HasOne("WeDrone.Web.Core.Domain.Location", "From")
                         .WithMany("FromHistory")
                         .HasForeignKey("FromId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("WeDrone.Web.Core.Domain.Order", "Order")
                         .WithMany("HistoryEntries")
@@ -1524,8 +1510,7 @@ namespace WeDrone.Web.Migrations
                     b.HasOne("WeDrone.Web.Core.Domain.Location", "To")
                         .WithMany("ToHistory")
                         .HasForeignKey("ToId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("From");
 
