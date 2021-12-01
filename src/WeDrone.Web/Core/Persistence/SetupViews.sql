@@ -10,17 +10,33 @@ CREATE VIEW vw_ShowAllOrders AS
 SELECT o.OrderId AS 'Order Id', u.Name AS
 'Ordered By',
 lorigin.Address AS 'Package Pick-up',
-ldestination.Address AS 'Package Destination', s.Name AS 'Current
-Status',
+ldestination.Address AS 'Package Destination', s.Name AS 'Current Status',
+oh.ValidFrom AS 'Last Update',
 o.OrderCreated AS 'Ordered On'
+
 FROM Orders o
 INNER JOIN Users u ON o.UserId = u.UserId
 INNER JOIN OrderHistory oh ON oh.OrderId = o.OrderId
 INNER JOIN Status s ON s.StatusId = oh.StatusId
-INNER JOIN Locations lorigin ON lorigin.LocationId = o.OrderId
+INNER JOIN Locations lorigin ON lorigin.LocationId = o.OriginId
 INNER JOIN Locations ldestination ON ldestination.LocationId = o.DestinationId
-WHERE ValidTo = '9999-12-31';
+WHERE oh.ValidFrom < GETDATE() AND oh.ValidTo > GETDATE()
 GO
+
+CREATE VIEW vw_OrdersWithDistanceNotCancelled AS
+
+-- View 2: Uses nested queries with the ANY or ALL operator and uses a GROUP BY clause
+-- Returns all orders that were not cancelled and also provides the aggregate sum of the distance travelled in each order.
+
+SELECT o.*, od.Distance
+From Orders o
+INNER JOIN (
+	SELECT OrderId, SUM(distance) AS 'Distance'
+	FROM OrderHistory oh
+	WHERE oh.OrderStatus != 2
+	GROUP BY OrderId) AS od ON od.OrderId = o.OrderId
+WHERE o.OrderId != ANY(SELECT DISTINCT OrderId FROM OrderHistory WHERE OrderStatus = 6);
+GO 
 
 CREATE VIEW vw_OrdersWithWeightOver10 AS
 -- View 6: Returns all orders that are over 10 kilograms in weight.

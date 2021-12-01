@@ -1,7 +1,6 @@
-﻿@{
-    ViewData["Title"] = "Order History";
-}
-<h1>@ViewData["Title"]</h1>
+﻿@model DashboardModel
+
+<h1>Order History</h1>
 <br />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -66,62 +65,36 @@ table.table-striped tbody tr:nth-of-type(odd) {
     margin: 0 2px;
 }
 </style>
-<body>
+
 <div class="container-xl">
     <div class="table-responsive">
         <div class="table-wrapper">
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Order#</th>
-                        <th>Pickup Address</th>
+                        <th>Order #</th>
+                        <th>Pick-up Address</th>
                         <th>Dropoff Address</th>
-                        <th>Distance</th>
-                        <th>Date</th>
-                        <th>Cost</th>
+                        <th>Current Status</th>
+                        <th>Last Update</th>
+                        <th>Ordered On</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach(var order in Model.Orders)
+                    {
                     <tr>
-                        <td>1</td>
-                        <td>89 Taunton Rd.</td>
-                        <td>89 Taunton Rd.</td>
-                        <td>25</td>
-                        <td>11/21/2021</td>
-                        <td>$1000</td>
+                        <td>@order.OrderId</td>
+                        <td>@order.PackagePickup</td>
+                        <td>@order.PackageDestination</td>
+                        <td>@order.CurrentStatus</td>
+                        <td>@order.LastUpdate</td>
+                        <td>@order.OrderedOn</td>
+                        <td><a href="Orders/@order.OrderId">View</a></td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>89 Taunton Rd.</td>
-                        <td>89 Taunton Rd.</td>
-                        <td>25</td>
-                        <td>11/21/2021</td>
-                        <td>$1000</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>89 Taunton Rd.</td>
-                        <td>89 Taunton Rd.</td>
-                        <td>25</td>
-                        <td>11/21/2021</td>
-                        <td>$1000</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>89 Taunton Rd.</td>
-                        <td>89 Taunton Rd.</td>
-                        <td>25</td>
-                        <td>11/21/2021</td>
-                        <td>$1000</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>89 Taunton Rd.</td>
-                        <td>89 Taunton Rd.</td>
-                        <td>28</td>
-                        <td>11/21/2021</td>
-                        <td>$1000</td>
-                    </tr>        
+                    }
+                        
                 </tbody>
             </table>
             <ul class="pagination justify-content-center">
@@ -136,5 +109,3 @@ table.table-striped tbody tr:nth-of-type(odd) {
         </div>
     </div>
 </div>     
-</body>
-</html>

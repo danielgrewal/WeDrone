@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WeDrone.Web.Core.Domain;
+using WeDrone.Web.Core.Domain.Keyless;
 
 namespace WeDrone.Web.Core.Persistence
 {
@@ -19,11 +20,14 @@ namespace WeDrone.Web.Core.Persistence
         public DbSet<Status> Status { get; set; }
         public DbSet<User> Users { get; set; }
 
+        // Keyless Entities
+        public DbSet<VwOrder> VwOrders { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(typeof(WeDroneContext).Assembly);
-            //builder.Entity<Location>().HasNoKey().ToView(null);
+            builder.Entity<VwOrder>().HasNoKey().ToView("vw_ShowAllOrders").HasKey(o => o.OrderId);
 
             base.OnModelCreating(builder);
         }

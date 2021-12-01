@@ -1,6 +1,8 @@
 ﻿USE WeDrone
 GO
 
+DROP VIEW [vw_ShowAllOrders];
+GO
 DROP VIEW [vw_OrdersWithWeightOver10];
 GO
 DROP VIEW [vw_OrdersWithVolumeOver10];
@@ -12,4 +14,4 @@ GO
 DROP VIEW [vw_OrdersDelivered];
 GO
 DROP PROCEDURE [sp_GetFlightPlan]
-
+GO

@@ -13,6 +13,11 @@ namespace WeDrone.Web.Models
             this.OrderHistory = orderHistory;
         }
 
+        public ViewOrderModel()
+        {
+            this.OrderHistory = new List<OrderHistory>();
+        }
+
         public Order Order { get; set; }
         public User User { get; set; }
         public Location Origin { get; set; }

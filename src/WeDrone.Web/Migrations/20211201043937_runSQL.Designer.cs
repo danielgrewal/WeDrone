@@ -12,8 +12,8 @@ using WeDrone.Web.Core.Persistence;
 namespace WeDrone.Web.Migrations
 {
     [DbContext(typeof(WeDroneContext))]
-    [Migration("20211130002032_initial")]
-    partial class initial
+    [Migration("20211201043937_runSQL")]
+    partial class runSQL
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1108,6 +1108,39 @@ namespace WeDrone.Web.Migrations
                             CurrentLegId = 42,
                             IsInitialLeg = true
                         });
+                });
+
+            modelBuilder.Entity("WeDrone.Web.Core.Domain.Keyless.VwOrder", b =>
+                {
+                    b.Property<string>("CurrentStatus")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Current Status");
+
+                    b.Property<DateTime>("LastUpdate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("Last Update");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int")
+                        .HasColumnName("Order Id");
+
+                    b.Property<string>("OrderedBy")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Ordered By");
+
+                    b.Property<DateTime>("OrderedOn")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("Ordered On");
+
+                    b.Property<string>("PackageDestination")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Package Destination");
+
+                    b.Property<string>("PackagePickup")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Package Pick-up");
+
+                    b.ToView("vw_ShowAllOrders");
                 });
 
             modelBuilder.Entity("WeDrone.Web.Core.Domain.Location", b =>
