@@ -77,10 +77,30 @@
 </style>
 
 <div class="container-xl mt-5">
-    <div class="card text-center mb-5" style="width: 16rem;">
-        <div class="card-body">
-            <h4 class="card-title">Customers With Orders</h4>
-            <h1 class="card-text">@Model.CustomersWithFilledOrders</h1>
+    <div class="d-flex">
+        <div class="card text-center mb-5 mr-5" style="width: 16rem;">
+            <div class="card-body">
+                <h4 class="card-title">Customers With Orders</h4>
+                <h1 class="card-text">@Model.CustomersWithFilledOrders</h1>
+            </div>
+        </div>
+        <div class="card text-center mb-5 mr-5" style="width: 16rem;">
+            <div class="card-body">
+                <h4 class="card-title">Orders With Weight > 10kg</h4>
+                <h1 class="card-text">@Model.OrdersWithWeightOver10</h1>
+            </div>
+        </div>
+        <div class="card text-center mb-5 mr-5" style="width: 16rem;">
+            <div class="card-body">
+                <h4 class="card-title">Orders With Volume > 1 cubic meter</h4>
+                <h1 class="card-text">@Model.OrdersWithVolumeOver1</h1>
+            </div>
+        </div>
+        <div class="card text-center mb-5" style="width: 16rem;">
+            <div class="card-body">
+                <h4 class="card-title">Orders Delivered</h4>
+                <h1 class="card-text">@Model.OrdersDelivered</h1>
+            </div>
         </div>
     </div>
 
@@ -185,6 +205,62 @@
                             <td>@user.Username</td>
                             <td>@user.Name</td>
                             <td>@Model.SubmittedOrders.Where(u => u.UserId == user.UserId).Count()</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h3>Drone Sites</h3>
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Location Id</th>
+                        <th>Name</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var site in Model.FacilityNodes)
+                    {
+                        <tr>
+                            <td>@site.LocationId</td>
+                            <td>@site.Name</td>
+                            <td>@site.Latitude</td>
+                            <td>@site.Longitude</td>
+                            <td>@site.Address</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h3>Flight Legs < 10km</h3>
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Flightleg Id</th>
+                        <th>From Facility</th>
+                        <th>To Facility</th>
+                        <th>Distance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var fl in Model.FlightLegsLessThan10)
+                    {
+                        <tr>
+                            <td>@fl.FlightlegId</td>
+                            <td>@fl.FromAddress</td>
+                            <td>@fl.ToAddress</td>
+                            <td>@fl.Distance</td>
                         </tr>
                     }
                 </tbody>

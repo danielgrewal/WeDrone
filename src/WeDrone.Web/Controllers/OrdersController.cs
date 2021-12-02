@@ -45,8 +45,10 @@ namespace WeDrone.Web.Controllers
                 return RedirectToAction("Index", "Orders");
 
             var orderHistory = _context.OrderHistory
-                .Where(oh => oh.Orderid == id)
+                .Where(oh => oh.Orderid == id && oh.ValidFrom < DateTime.Now)
                 .Include(oh => oh.From)
+                .Include(oh => oh.To)
+                .Include(oh => oh.Status)
                 .ToList();
 
             var model = new ViewOrderModel(order, orderHistory);

@@ -25,6 +25,11 @@ namespace WeDrone.Web.Core.Persistence
         public DbSet<VwSubmittedOrders> VwSubmittedOrders { get; set; }
         public DbSet<VwCustomersWithFilledOrders> VwCustomersWithFilledOrders { get; set; }
         public DbSet<VwAllUsersAndTheirOrders> VwAllUsersAndTheirOrders { get; set; }
+        public DbSet<VwOrdersWithWeightOver10> VwOrdersWithWeightOver10 { get; set; }
+        public DbSet<VwOrdersWithVolumeOver1> VwOrdersWithVolumeOver1 { get; set; }
+        public DbSet<VwShowFacilityNodes> VwShowFacilityNodes { get; set; }
+        public DbSet<VwFlightLegsLessThan10> VwFlightLegsLessThan10 { get; set; }
+        public DbSet<VwOrdersDelivered> VwOrdersDelivered { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -34,6 +39,11 @@ namespace WeDrone.Web.Core.Persistence
             builder.Entity<VwSubmittedOrders>().ToView("vw_OrdersWithDistanceNotCancelled").HasKey(o => o.OrderId);
             builder.Entity<VwCustomersWithFilledOrders>().ToView("vw_CustomersWithFilledOrders").HasKey(o => o.UserId);
             builder.Entity<VwAllUsersAndTheirOrders>().ToView("vw_AllUsersAndTheirOrders").HasNoKey();
+            builder.Entity<VwOrdersWithWeightOver10>().ToView("vw_OrdersWithWeightOver10").HasKey(o => o.OrderId);
+            builder.Entity<VwOrdersWithVolumeOver1>().ToView("vw_OrdersWithVolumeOver1").HasKey(o => o.OrderId);
+            builder.Entity<VwShowFacilityNodes>().ToView("vw_ShowFacilityNodes").HasKey(l => l.LocationId);
+            builder.Entity<VwFlightLegsLessThan10>().ToView("vw_FlightLegsLessThan10").HasKey(fl => fl.FlightlegId);
+            builder.Entity<VwOrdersDelivered>().ToView("vw_OrdersDelivered").HasNoKey();
 
             base.OnModelCreating(builder);
         }

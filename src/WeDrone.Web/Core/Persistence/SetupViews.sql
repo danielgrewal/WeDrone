@@ -58,21 +58,19 @@ FULL JOIN Orders o ON o.UserId = u.UserId;
 GO
 
 
-
-
 CREATE VIEW vw_OrdersWithWeightOver10 AS
 -- View 6: Returns all orders that are over 10 kilograms in weight.
 
-SELECT o.*
+SELECT OrderId
 From Orders o
-WHERE o.Weight < 10;
+WHERE o.Weight > 10;
 GO
 
-CREATE VIEW vw_OrdersWithVolumeOver10 AS
--- View 7: Returns all orders that are over 10 cubic feet in volume.
-SELECT o.*
+CREATE VIEW vw_OrdersWithVolumeOver1 AS
+-- View 7: Returns all orders that are over 1 cubic feet in volume.
+SELECT OrderId
 From Orders o
-WHERE o.Volume > 10;
+WHERE o.Volume > 1;
 GO
 
 CREATE VIEW vw_ShowFacilityNodes AS
@@ -89,19 +87,26 @@ GO
 CREATE VIEW vw_FlightLegsLessThan10 AS
 -- View 9: Returns all flight legs that are less than 10 km
 -- These are the shortest distance routes between nodes
-SELECT fl.*
+SELECT fl.*, l.Address 'FromAddress', l2.Address 'ToAddress'
 From FlightLegs fl
+INNER JOIN Locations l on l.LocationId = fl.FromId
+INNER JOIN Locations l2 on l2.LocationId = fl.ToId
 WHERE fl.Distance < 10;
 GO
 
 CREATE VIEW vw_OrdersDelivered AS
 -- View 10: Return all orders that were successfully delivered
-SELECT s.*
+SELECT Count (*) 'OrdersDelivered'
 From Status s
-WHERE s.Name = 'Delivered';
+INNER JOIN OrderHistory oh on oh.StatusId = s.StatusId
+WHERE s.Name = 'Delivered'
+AND oh.ValidFrom < GETDATE() AND oh.ValidTo > GETDATE();
 GO
 
 CREATE PROCEDURE sp_GetFlightPlan
+-- View 5: This view was converted to a stored procedure to allow the recursive CTE
+-- to be passed in initial values to build from
+
 	@RouteStartId		INT,
 	@RouteEndId			INT
 AS

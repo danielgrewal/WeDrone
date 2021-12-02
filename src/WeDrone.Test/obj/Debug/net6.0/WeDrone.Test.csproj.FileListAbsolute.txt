@@ -1,4 +1,8 @@
 C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\bin\Debug\net6.0\CoverletSourceRootsMapping
+C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\obj\Debug\net6.0\WeDrone.Test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\obj\Debug\net6.0\WeDrone.Test.AssemblyInfoInputs.cache
+C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\obj\Debug\net6.0\WeDrone.Test.AssemblyInfo.cs
+C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\obj\Debug\net6.0\WeDrone.Test.csproj.CoreCompileInputs.cache
 C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\bin\Debug\net6.0\WeDrone.Web.deps.json
 C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\bin\Debug\net6.0\WeDrone.Web.runtimeconfig.json
 C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\bin\Debug\net6.0\appsettings.json
@@ -131,10 +135,6 @@ C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\bin\Debug\net6.0\ru
 C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\bin\Debug\net6.0\WeDrone.Web.dll
 C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\bin\Debug\net6.0\WeDrone.Web.pdb
 C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\obj\Debug\net6.0\WeDrone.Test.csproj.AssemblyReference.cache
-C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\obj\Debug\net6.0\WeDrone.Test.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\obj\Debug\net6.0\WeDrone.Test.AssemblyInfoInputs.cache
-C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\obj\Debug\net6.0\WeDrone.Test.AssemblyInfo.cs
-C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\obj\Debug\net6.0\WeDrone.Test.csproj.CoreCompileInputs.cache
 C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\obj\Debug\net6.0\WeDrone.Test.csproj.CopyComplete
 C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\obj\Debug\net6.0\WeDrone.Test.dll
 C:\Users\Usman-Y740\Source\Repos\WeDroneApp\src\WeDrone.Test\obj\Debug\net6.0\ref\WeDrone.Test.dll

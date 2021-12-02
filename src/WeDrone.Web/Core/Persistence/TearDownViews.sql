@@ -7,9 +7,11 @@ DROP VIEW [vw_OrdersWithDistanceNotCancelled]
 GO
 DROP VIEW [vw_CustomersWithFilledOrders]
 GO
+DROP VIEW [vw_AllUsersAndTheirOrders]
+GO
 DROP VIEW [vw_OrdersWithWeightOver10];
 GO
-DROP VIEW [vw_OrdersWithVolumeOver10];
+DROP VIEW [vw_OrdersWithVolumeOver1];
 GO
 DROP VIEW [vw_ShowFacilityNodes];
 GO

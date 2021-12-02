@@ -1108,6 +1108,92 @@ namespace WeDrone.Web.Migrations
                         });
                 });
 
+            modelBuilder.Entity("WeDrone.Web.Core.Domain.Keyless.VwAllUsersAndTheirOrders", b =>
+                {
+                    b.Property<int?>("DestinationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("OrderCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("OrderFilled")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OriginId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("Volume")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("Weight")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.ToView("vw_AllUsersAndTheirOrders");
+                });
+
+            modelBuilder.Entity("WeDrone.Web.Core.Domain.Keyless.VwCustomersWithFilledOrders", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToView("vw_CustomersWithFilledOrders");
+                });
+
+            modelBuilder.Entity("WeDrone.Web.Core.Domain.Keyless.VwFlightLegsLessThan10", b =>
+                {
+                    b.Property<int>("FlightlegId")
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FlightlegId"), 1L, 1);
+
+                    b.Property<decimal>("Distance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("FromAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FromId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ToAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ToId")
+                        .HasColumnType("int");
+
+                    b.HasKey("FlightlegId");
+
+                    b.ToView("vw_FlightLegsLessThan10");
+                });
+
             modelBuilder.Entity("WeDrone.Web.Core.Domain.Keyless.VwOrder", b =>
                 {
                     b.Property<int>("OrderId")
@@ -1145,6 +1231,65 @@ namespace WeDrone.Web.Migrations
                     b.ToView("vw_ShowAllOrders");
                 });
 
+            modelBuilder.Entity("WeDrone.Web.Core.Domain.Keyless.VwOrdersDelivered", b =>
+                {
+                    b.Property<int>("OrdersDelivered")
+                        .HasColumnType("int");
+
+                    b.ToView("vw_OrdersDelivered");
+                });
+
+            modelBuilder.Entity("WeDrone.Web.Core.Domain.Keyless.VwOrdersWithVolumeOver1", b =>
+                {
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"), 1L, 1);
+
+                    b.HasKey("OrderId");
+
+                    b.ToView("vw_OrdersWithVolumeOver1");
+                });
+
+            modelBuilder.Entity("WeDrone.Web.Core.Domain.Keyless.VwOrdersWithWeightOver10", b =>
+                {
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"), 1L, 1);
+
+                    b.HasKey("OrderId");
+
+                    b.ToView("vw_OrdersWithWeightOver10");
+                });
+
+            modelBuilder.Entity("WeDrone.Web.Core.Domain.Keyless.VwShowFacilityNodes", b =>
+                {
+                    b.Property<int>("LocationId")
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LocationId"), 1L, 1);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDroneFacility")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Latitude")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Longitude")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("LocationId");
+
+                    b.ToView("vw_ShowFacilityNodes");
+                });
+
             modelBuilder.Entity("WeDrone.Web.Core.Domain.Keyless.VwSubmittedOrders", b =>
                 {
                     b.Property<int>("OrderId")
@@ -1152,16 +1297,16 @@ namespace WeDrone.Web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"), 1L, 1);
 
-                    b.Property<double>("Cost")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Cost")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("DestinationId")
                         .HasColumnType("int");
 
-                    b.Property<double>("Distance")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Distance")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("FlightRouteId")
+                    b.Property<int?>("FlightRouteId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("OrderCreated")
@@ -1176,11 +1321,11 @@ namespace WeDrone.Web.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<double>("Volume")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Volume")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<double>("Weight")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Weight")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("OrderId");
 
