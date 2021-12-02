@@ -1,7 +1,5 @@
 ﻿@model DashboardModel
 
-<h1>Order History</h1>
-<br />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -9,64 +7,84 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <style>
-body {
-    color: #666;
-    background: #f5f5f5;
-    font-family: 'Roboto', sans-serif;
-}
-.table-responsive {
-	margin: 30px 0;
-}
-table.table tr th, table.table tr td {
-    border-color: #e9e9e9;
-}
-table.table-striped tbody tr:nth-of-type(odd) {
-    background-color: #fcfcfc;
-}
-.table-wrapper {
-    min-width: 1000px;
-    background: #fff;
-    padding: 20px;
-    box-shadow: 0 1px 1px rgba(0,0,0,.05);
-}
-.pagination {
-    margin: 10px 0 5px;
-}
-.pagination li a {
-    border: none;
-    min-width: 30px;
-    min-height: 30px;
-    color: #999;
-    margin: 0 2px;
-    line-height: 30px;
-    border-radius: 4px !important;
-    text-align: center;
-    padding: 0;
-}
-.pagination li a:hover {
-    color: #666;
-}
-.pagination li.active a, .pagination li.active a.page-link {
-    background: #6aa84f;
-}
-.pagination li.active a:hover {        
-    background: #45aba0;
-}
-.pagination li:first-child a, .pagination li:last-child a {
-    padding: 0 10px;
-}
-.pagination li.disabled a {
-    color: #ccc;
-}
-.pagination li i {
-    font-size: 17px;
-    position: relative;
-    top: 1px;
-    margin: 0 2px;
-}
+    body {
+        color: #666;
+        background: #f5f5f5;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .table-responsive {
+        margin: 30px 0;
+    }
+
+    table.table tr th, table.table tr td {
+        border-color: #e9e9e9;
+    }
+
+    table.table-striped tbody tr:nth-of-type(odd) {
+        background-color: #fcfcfc;
+    }
+
+    .table-wrapper {
+        min-width: 1000px;
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+
+    .pagination {
+        margin: 10px 0 5px;
+    }
+
+        .pagination li a {
+            border: none;
+            min-width: 30px;
+            min-height: 30px;
+            color: #999;
+            margin: 0 2px;
+            line-height: 30px;
+            border-radius: 4px !important;
+            text-align: center;
+            padding: 0;
+        }
+
+            .pagination li a:hover {
+                color: #666;
+            }
+
+        .pagination li.active a, .pagination li.active a.page-link {
+            background: #6aa84f;
+        }
+
+            .pagination li.active a:hover {
+                background: #45aba0;
+            }
+
+        .pagination li:first-child a, .pagination li:last-child a {
+            padding: 0 10px;
+        }
+
+        .pagination li.disabled a {
+            color: #ccc;
+        }
+
+        .pagination li i {
+            font-size: 17px;
+            position: relative;
+            top: 1px;
+            margin: 0 2px;
+        }
 </style>
 
-<div class="container-xl">
+<div class="container-xl mt-5">
+    <div class="card text-center mb-5" style="width: 16rem;">
+        <div class="card-body">
+            <h4 class="card-title">Customers With Orders</h4>
+            <h1 class="card-text">@Model.CustomersWithFilledOrders</h1>
+        </div>
+    </div>
+
+    <h3>In-Progress Orders</h3>
     <div class="table-responsive">
         <div class="table-wrapper">
             <table class="table table-striped">
@@ -78,34 +96,99 @@ table.table-striped tbody tr:nth-of-type(odd) {
                         <th>Current Status</th>
                         <th>Last Update</th>
                         <th>Ordered On</th>
+                        <th>Distance</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach(var order in Model.Orders)
-                    {
-                    <tr>
-                        <td>@order.OrderId</td>
-                        <td>@order.PackagePickup</td>
-                        <td>@order.PackageDestination</td>
-                        <td>@order.CurrentStatus</td>
-                        <td>@order.LastUpdate</td>
-                        <td>@order.OrderedOn</td>
-                        <td><a href="Orders/@order.OrderId">View</a></td>
-                    </tr>
+                    @{
+                        var orders = Model.Orders.Where(o => o.CurrentStatus != "Delivered");
+
                     }
-                        
+                    @foreach (var order in orders)
+                    {
+                        var details = Model.SubmittedOrders.FirstOrDefault(o => o.OrderId == order.OrderId);
+                        <tr>
+                            <td>@order.OrderId</td>
+                            <td>@order.PackagePickup</td>
+                            <td>@order.PackageDestination</td>
+                            <td>@order.CurrentStatus</td>
+                            <td>@order.LastUpdate</td>
+                            <td>@order.OrderedOn</td>
+                            <td>@details.Distance</td>
+                            <td><a href="Orders/@order.OrderId">View</a></td>
+                        </tr>
+                    }
                 </tbody>
             </table>
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled"><a href="#"><i class="fa fa-long-arrow-left"></i> Previous</a></li>
-                <li class="page-item"><a href="#" class="page-link">1</a></li>
-                <li class="page-item"><a href="#" class="page-link">2</a></li>
-                <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                <li class="page-item"><a href="#" class="page-link">4</a></li>
-                <li class="page-item"><a href="#" class="page-link">5</a></li>
-                <li class="page-item"><a href="#" class="page-link">Next <i class="fa fa-long-arrow-right"></i></a></li>
-            </ul>
         </div>
     </div>
-</div>     
+
+    <h3>Completed Orders</h3>
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Order #</th>
+                        <th>Pick-up Address</th>
+                        <th>Dropoff Address</th>
+                        <th>Current Status</th>
+                        <th>Last Update</th>
+                        <th>Ordered On</th>
+                        <th>Distance</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var delivered = Model.Orders.Where(o => o.CurrentStatus == "Delivered");
+                    }
+
+                    @foreach (var order in delivered)
+                    {
+                        var details = Model.SubmittedOrders.FirstOrDefault(o => o.OrderId == order.OrderId);
+                        <tr>
+                            <td>@order.OrderId</td>
+                            <td>@order.PackagePickup</td>
+                            <td>@order.PackageDestination</td>
+                            <td>@order.CurrentStatus</td>
+                            <td>@order.LastUpdate</td>
+                            <td>@order.OrderedOn</td>
+                            <td>@details.Distance</td>
+                            <td><a href="Orders/@order.OrderId">View</a></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h3>App Users</h3>
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>User Id</th>
+                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Num. Orders</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.AllUsersAndTheirOrders.GroupBy(u => u.UserId).Select(g => g.FirstOrDefault()))
+                    {
+                        <tr>
+                            <td>@user.UserId</td>
+                            <td>@user.Username</td>
+                            <td>@user.Name</td>
+                            <td>@Model.SubmittedOrders.Where(u => u.UserId == user.UserId).Count()</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

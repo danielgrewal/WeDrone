@@ -29,14 +29,36 @@ CREATE VIEW vw_OrdersWithDistanceNotCancelled AS
 -- Returns all orders that were not cancelled and also provides the aggregate sum of the distance travelled in each order.
 
 SELECT o.*, od.Distance
-From Orders o
+FROM Orders o
 INNER JOIN (
 	SELECT OrderId, SUM(distance) AS 'Distance'
 	FROM OrderHistory oh
-	WHERE oh.OrderStatus != 2
 	GROUP BY OrderId) AS od ON od.OrderId = o.OrderId
-WHERE o.OrderId != ANY(SELECT DISTINCT OrderId FROM OrderHistory WHERE OrderStatus = 6);
+WHERE NOT (o.OrderId = ANY(SELECT DISTINCT OrderId FROM OrderHistory WHERE OrderHistory.StatusId = 6));
 GO 
+
+CREATE VIEW vw_CustomersWithFilledOrders AS
+-- View 3: A correlated nested query
+-- Returns user records for all users that have created orders that have been delivered.
+
+SELECT * FROM Users u
+WHERE EXISTS (
+	SELECT UserId FROM Orders o 
+	WHERE o.UserId = u.UserId AND o.OrderFilled IS NOT NULL
+);
+GO
+
+CREATE VIEW vw_AllUsersAndTheirOrders AS
+-- View 4: Uses a FULL JOIN
+-- Returns all users and all of their associated orders, if they have made any.
+
+SELECT u.*, o.OrderId, o.OriginId, o.DestinationId, o.Weight, o.Volume, o.OrderCreated, o.OrderFilled 
+FROM Users u
+FULL JOIN Orders o ON o.UserId = u.UserId;
+GO
+
+
+
 
 CREATE VIEW vw_OrdersWithWeightOver10 AS
 -- View 6: Returns all orders that are over 10 kilograms in weight.

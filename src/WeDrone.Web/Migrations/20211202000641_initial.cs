@@ -145,7 +145,7 @@ namespace WeDrone.Web.Migrations
                     FlightRouteId = table.Column<int>(type: "int", nullable: true),
                     Weight = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     Volume = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    Cost = table.Column<double>(type: "float", nullable: false),
+                    Cost = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     OrderCreated = table.Column<DateTime>(type: "datetime2", nullable: true),
                     OrderFilled = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },

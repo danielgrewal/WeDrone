@@ -22,12 +22,18 @@ namespace WeDrone.Web.Core.Persistence
 
         // Keyless Entities
         public DbSet<VwOrder> VwOrders { get; set; }
+        public DbSet<VwSubmittedOrders> VwSubmittedOrders { get; set; }
+        public DbSet<VwCustomersWithFilledOrders> VwCustomersWithFilledOrders { get; set; }
+        public DbSet<VwAllUsersAndTheirOrders> VwAllUsersAndTheirOrders { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(typeof(WeDroneContext).Assembly);
-            builder.Entity<VwOrder>().HasNoKey().ToView("vw_ShowAllOrders").HasKey(o => o.OrderId);
+            builder.Entity<VwOrder>().ToView("vw_ShowAllOrders").HasKey(o => o.OrderId);
+            builder.Entity<VwSubmittedOrders>().ToView("vw_OrdersWithDistanceNotCancelled").HasKey(o => o.OrderId);
+            builder.Entity<VwCustomersWithFilledOrders>().ToView("vw_CustomersWithFilledOrders").HasKey(o => o.UserId);
+            builder.Entity<VwAllUsersAndTheirOrders>().ToView("vw_AllUsersAndTheirOrders").HasNoKey();
 
             base.OnModelCreating(builder);
         }

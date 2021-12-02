@@ -23,9 +23,7 @@ namespace WeDrone.Web.Controllers
 
         public IActionResult Index()
         {
-            var orderList = _context.VwOrders.ToList();
-            var model = new DashboardModel(orderList);
-            //var orders = _context.FromSqlRaw("EXEC dbo.sp_GetFlightPlan {0}, {1}",
+            var model = new DashboardModel(_context);
             return View(model);
         }
         public IActionResult Create()

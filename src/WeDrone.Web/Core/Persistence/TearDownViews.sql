@@ -3,6 +3,10 @@ GO
 
 DROP VIEW [vw_ShowAllOrders];
 GO
+DROP VIEW [vw_OrdersWithDistanceNotCancelled]
+GO
+DROP VIEW [vw_CustomersWithFilledOrders]
+GO
 DROP VIEW [vw_OrdersWithWeightOver10];
 GO
 DROP VIEW [vw_OrdersWithVolumeOver10];

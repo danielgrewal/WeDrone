@@ -1110,6 +1110,12 @@ namespace WeDrone.Web.Migrations
 
             modelBuilder.Entity("WeDrone.Web.Core.Domain.Keyless.VwOrder", b =>
                 {
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int")
+                        .HasColumnName("Order Id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"), 1L, 1);
+
                     b.Property<string>("CurrentStatus")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Current Status");
@@ -1117,10 +1123,6 @@ namespace WeDrone.Web.Migrations
                     b.Property<DateTime>("LastUpdate")
                         .HasColumnType("datetime2")
                         .HasColumnName("Last Update");
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int")
-                        .HasColumnName("Order Id");
 
                     b.Property<string>("OrderedBy")
                         .HasColumnType("nvarchar(max)")
@@ -1138,7 +1140,51 @@ namespace WeDrone.Web.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Package Pick-up");
 
+                    b.HasKey("OrderId");
+
                     b.ToView("vw_ShowAllOrders");
+                });
+
+            modelBuilder.Entity("WeDrone.Web.Core.Domain.Keyless.VwSubmittedOrders", b =>
+                {
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"), 1L, 1);
+
+                    b.Property<double>("Cost")
+                        .HasColumnType("float");
+
+                    b.Property<int>("DestinationId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Distance")
+                        .HasColumnType("float");
+
+                    b.Property<int>("FlightRouteId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("OrderCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("OrderFilled")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("OriginId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Volume")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Weight")
+                        .HasColumnType("float");
+
+                    b.HasKey("OrderId");
+
+                    b.ToView("vw_OrdersWithDistanceNotCancelled");
                 });
 
             modelBuilder.Entity("WeDrone.Web.Core.Domain.Location", b =>
@@ -1248,8 +1294,8 @@ namespace WeDrone.Web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"), 1L, 1);
 
-                    b.Property<double>("Cost")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Cost")
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<int>("DestinationId")
                         .HasColumnType("int");

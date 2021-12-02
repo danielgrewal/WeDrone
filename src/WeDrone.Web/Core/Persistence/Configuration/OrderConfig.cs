@@ -17,6 +17,10 @@ namespace WeDrone.Web.Core.Persistence.Configuration
                 .HasColumnType("decimal(10,2)");
 
             builder
+                .Property(o => o.Cost)
+                .HasColumnType("decimal(10,2)");
+
+            builder
                 .HasOne(o => o.Origin)
                 .WithMany(l => l.OriginOrders)
                 .HasForeignKey(o => o.OriginId)
