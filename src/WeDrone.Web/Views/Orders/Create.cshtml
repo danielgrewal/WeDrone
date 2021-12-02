@@ -6,7 +6,6 @@
    label {
         font-weight: bold;
     }
-
 </style>
 <h4>Step 1: Enter the size and weight of the delivery</h4>
 <p>The package must be <b>no more than</b> 1.5 cubic meters in volume and 50 Kg in weight.</p>
@@ -35,25 +34,12 @@
     <h4>Step 2: Enter the pickup and dropoff delivery locations</h4>
     <p>Must be valid postal addresses in the <b>Greater Toronto Area</b></p>
     <label asp-for="PickupAddress">Pickup Address:</label>
-    <input asp-for="PickupAddress" type="text" id="pickupAddress" autocomplete="off" />
+    <input asp-for="PickupAddress" type="search" class="form-control" size="50" id="pickupAddress" autocomplete="off" />
     <br><br>
-    <label for="dropoffAddress">Dropoff Address:</label>
     <label asp-for="DropoffAddress">Drop-off Address:</label>
-    <input asp-for="DropoffAddress" type="text" id="dropoffAddress" autocomplete="off" />
+    <input asp-for="DropoffAddress" type="search" class="form-control" size="50" id="dropoffAddress" autocomplete="off" />
     <br><br>
-    <button type="submit">Get Quote</button>
-
-    <br />
-    <h4>Step 3: Review the delivery order details</h4>
-    <p>If you accept the cost and details of the order, then proceed with the delivery order</p>
-
-    <label for="cost">Delivery Distance:</label>
-    <label for="calcCost" style="color:#6aa84f;">SHOW FLIGHT DISTANCE</label><br>
-    <label for="rate">Rate:</label>
-    <label for="rate" style="color:#6aa84f;">SHOW RATE ($/km)</label><br>
-    <label for="rate">Total Cost:</label>
-    <label for="rate" style="color:#f44336;">SHOW COST, DISTANCE x RATE</label><br><br>
-    <input type="button" onclick="window.location.href='/Home/Track'" value="Submit Order">
+    <button type="submit">Submit</button>
     <input type="button" onclick="window.location.reload()" value="Start Over">
 </form>
 
