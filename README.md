@@ -9,6 +9,9 @@ Karanvir Bhogal 100748973</br>
 Daniel Grewal 100768376 *(Team Lead)*</br>
 Mohammed Adnan Hashmi 100753115</br>
 
+## Link to SOFE3650 FINAL REPORT Document
+https://github.com/danielgrewal/WeDrone/blob/main/SOFE3650_FINAL_REPORT.pdf
+
 ## Installation Instructions
 
 **Set up ASP.NET Core**
